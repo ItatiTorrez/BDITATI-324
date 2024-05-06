@@ -1,0 +1,34 @@
+DROP TABLE IF EXISTS PERSONA;
+DROP TABLE IF EXISTS CUENTA_BANCARIA;
+DROP TABLE IF EXISTS TRANSACCION_BANCARIA;
+
+CREATE TABLE PERSONA(
+	id_persona SERIAL,
+	nombre varchar(30),
+	apellido varchar(30),
+	fecha_nac date,
+	direccion varchar(30),
+	correo_electronico varchar(30),
+	telefono varchar(30),
+	primary key(id_persona)
+);
+
+CREATE TABLE CUENTA_BANCARIA(
+	id_cuenta SERIAL,
+	id_persona int REFERENCES PERSONA(id_persona),
+	num_cuenta varchar(30),
+	tipo_cuenta varchar(30),
+	saldo numeric,
+	fecha_apertura date,
+	primary key(id_cuenta)
+);
+
+CREATE TABLE TRANSACCION_BANCARIA(
+	id_transaccion SERIAL,
+	id_cuenta_origen int REFERENCES CUENTA_BANCARIA(id_cuenta),
+	id_cuenta_dest int REFERENCES CUENTA_BANCARIA(id_cuenta),
+	monto numeric,
+	fecha_transaccion date,
+	tipo_transaccion varchar(30),
+	primary key(id_transaccion)
+);

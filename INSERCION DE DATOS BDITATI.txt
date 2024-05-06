@@ -1,0 +1,103 @@
+INSERT INTO PERSONA(nombre, apellido, fecha_nac, direccion, correo_electronico,telefono)values('Itati','Torrez','1999/05/18','Alto Villa Copacabana','itatikarla90@gmail.com','70530932');
+INSERT INTO Persona (nombre, apellido, fecha_nac, direccion, correo_electronico, telefono) VALUES 
+('Juan', 'Martinez', '1985/07/10', 'Calle 123', 'juan.martinez@example.com', '123456789'),
+('María', 'García', '1990/09/15', 'Avenida Principal', 'maria.garcia@example.com', '987654321'),
+('Pedro', 'López', '1978/03/25', 'Calle 456', 'pedro.lopez@example.com', '456123789'),
+('Laura', 'Rodríguez', '1989/11/30', 'Avenida Central', 'laura.rodriguez@example.com', '789456123'),
+('Carlos', 'Hernández', '1980/06/05', 'Calle 789', 'carlos.hernandez@example.com', '321654987'),
+('Ana', 'Fernández', '1995/02/20', 'Calle 010', 'ana.fernandez@example.com', '654987321'),
+('Diego', 'Gómez', '1987/08/12', 'Avenida Norte', 'diego.gomez@example.com', '147258369'),
+('Sofía', 'Pérez', '1992/04/17', 'Calle Sur', 'sofia.perez@example.com', '369147258'),
+('Lucas', 'Díaz', '1983/10/22', 'Avenida Este', 'lucas.diaz@example.com', '258369147'),
+('Valentina', 'Sánchez', '1986/12/05', 'Calle Oeste', 'valentina.sanchez@example.com', '852369741');
+INSERT INTO cuenta_bancaria(id_persona,num_cuenta, tipo_cuenta, saldo, fecha_apertura) values
+(1,'125431953','ahorro',2350,'2019/09/05');
+INSERT INTO Cuenta_Bancaria (id_persona, num_cuenta, tipo_cuenta, saldo, fecha_apertura) VALUES 
+(2, '215489631', 'ahorro', 3500, '2020/02/10'),
+(3, '325874962', 'corriente', 5000, '2018/11/20'),
+(4, '451236987', 'ahorro', 1500, '2019/08/15'),
+(5, '548796325', 'corriente', 7000, '2021/03/30'),
+(6, '654789321', 'ahorro', 4200, '2020/09/25'),
+(7, '741258963', 'corriente', 3000, '2017/06/12'),
+(8, '852369741', 'ahorro', 6000, '2019/04/08'),
+(9, '963258741', 'corriente', 8500, '2021/01/05'),
+(10, '123698745', 'ahorro', 2000, '2018/07/18'),
+(1, '147852369', 'corriente', 4000, '2022/05/10');
+INSERT INTO Cuenta_Bancaria (id_persona, num_cuenta, tipo_cuenta, saldo, fecha_apertura) VALUES 
+(2, '369852147', 'corriente', 6000, '2020/11/15'),
+(3, '951753624', 'ahorro', 3800, '2019/07/20'),
+(4, '258741369', 'corriente', 4500, '2021/04/25'),
+(5, '852963741', 'ahorro', 5200, '2020/10/10'),
+(6, '147369852', 'corriente', 6700, '2018/12/05'),
+(7, '123987456', 'ahorro', 2900, '2021/02/15'),
+(8, '369258147', 'corriente', 7500, '2019/09/30'),
+(9, '789654123', 'ahorro', 4800, '2022/03/08'),
+(10, '654123789', 'corriente', 3200, '2020/08/20'),
+(1, '963258741', 'ahorro', 4200, '2021/11/10');
+
+
+
+-- Transacción 2
+INSERT INTO transaccion_bancaria (id_cuenta_origen, id_cuenta_dest, monto, fecha_transaccion, tipo_transaccion)
+SELECT 2, 3, 2000, '2024/02/10', 'transferencia'
+WHERE (SELECT saldo FROM cuenta_bancaria WHERE id_cuenta = 2) >= 2000;
+
+-- Transacción 3
+INSERT INTO transaccion_bancaria (id_cuenta_origen, id_cuenta_dest, monto, fecha_transaccion, tipo_transaccion)
+SELECT 3, 4, 1500, '2024/03/15', 'transferencia'
+WHERE (SELECT saldo FROM cuenta_bancaria WHERE id_cuenta = 3) >= 1500;
+
+-- Transacción 4
+INSERT INTO transaccion_bancaria (id_cuenta_origen, id_cuenta_dest, monto, fecha_transaccion, tipo_transaccion)
+SELECT 4, 5, 1200, '2024/04/20', 'transferencia'
+WHERE (SELECT saldo FROM cuenta_bancaria WHERE id_cuenta = 4) >= 1200;
+
+-- Transacción 5
+INSERT INTO transaccion_bancaria (id_cuenta_origen, id_cuenta_dest, monto, fecha_transaccion, tipo_transaccion)
+SELECT 5, 6, 1800, '2024/05/25', 'transferencia'
+WHERE (SELECT saldo FROM cuenta_bancaria WHERE id_cuenta = 5) >= 1800;
+
+-- Transacción 6
+INSERT INTO transaccion_bancaria (id_cuenta_origen, id_cuenta_dest, monto, fecha_transaccion, tipo_transaccion)
+SELECT 6, 7, 2500, '2024/06/30', 'transferencia'
+WHERE (SELECT saldo FROM cuenta_bancaria WHERE id_cuenta = 6) >= 2500;
+
+-- Transacción 7
+INSERT INTO transaccion_bancaria (id_cuenta_origen, id_cuenta_dest, monto, fecha_transaccion, tipo_transaccion)
+SELECT 7, 8, 2200, '2024/07/05', 'transferencia'
+WHERE (SELECT saldo FROM cuenta_bancaria WHERE id_cuenta = 7) >= 2200;
+
+-- Transacción 8
+INSERT INTO transaccion_bancaria (id_cuenta_origen, id_cuenta_dest, monto, fecha_transaccion, tipo_transaccion)
+SELECT 8, 9, 1700, '2024/08/10', 'transferencia'
+WHERE (SELECT saldo FROM cuenta_bancaria WHERE id_cuenta = 8) >= 1700;
+
+-- Transacción 9
+INSERT INTO transaccion_bancaria (id_cuenta_origen, id_cuenta_dest, monto, fecha_transaccion, tipo_transaccion)
+SELECT 9, 10, 2400, '2024/09/15', 'transferencia'
+WHERE (SELECT saldo FROM cuenta_bancaria WHERE id_cuenta = 9) >= 2400;
+
+-- Transacción 10
+INSERT INTO transaccion_bancaria (id_cuenta_origen, id_cuenta_dest, monto, fecha_transaccion, tipo_transaccion)
+SELECT 10, 1, 2000, '2024/10/20', 'transferencia'
+WHERE (SELECT saldo FROM cuenta_bancaria WHERE id_cuenta = 10) >= 2000;
+
+-- Transacción 11
+INSERT INTO transaccion_bancaria (id_cuenta_origen, id_cuenta_dest, monto, fecha_transaccion, tipo_transaccion)
+SELECT 1, 2, 3200, '2024/11/25', 'transferencia'
+WHERE (SELECT saldo FROM cuenta_bancaria WHERE id_cuenta = 1) >= 3200;
+
+-- Transacción de retiro 1: se retiran $1000 de la cuenta 3
+INSERT INTO transaccion_bancaria(id_cuenta_origen, id_cuenta_dest, monto, fecha_transaccion, tipo_transaccion)
+SELECT 3, 3, 1000, '2024/12/01', 'retiro'
+WHERE EXISTS (SELECT 1 FROM cuenta_bancaria WHERE id_cuenta = 3 AND saldo >= 1000);
+
+-- Transacción de retiro 2: se retiran $1500 de la cuenta 6
+INSERT INTO transaccion_bancaria(id_cuenta_origen, id_cuenta_dest, monto, fecha_transaccion, tipo_transaccion)
+SELECT 6, 6, 1500, '2024/12/05', 'retiro'
+WHERE EXISTS (SELECT 1 FROM cuenta_bancaria WHERE id_cuenta = 6 AND saldo >= 1500);
+
+-- Transacción de retiro 3: se retiran $800 de la cuenta 9
+INSERT INTO transaccion_bancaria(id_cuenta_origen, id_cuenta_dest, monto, fecha_transaccion, tipo_transaccion)
+SELECT 9, 9, 800, '2024/12/10', 'retiro'
+WHERE EXISTS (SELECT 1 FROM cuenta_bancaria WHERE id_cuenta = 9 AND saldo >= 800);
